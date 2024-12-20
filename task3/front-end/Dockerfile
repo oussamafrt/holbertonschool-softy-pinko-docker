@@ -1,0 +1,13 @@
+# Use the latest nginx image as the base image
+FROM nginx:latest
+
+# Copy the front-end files to the appropriate directory on the Docker image
+COPY ./softy-pinko-front-end /var/www/html/softy-pinko-front-end
+
+# Copy the Nginx configuration file to the Docker image
+COPY ./softy-pinko-front-end.conf /etc/nginx/conf.d/default.conf
+
+# Expose port 9000
+EXPOSE 9000
+
+CMD ["nginx", "-g", "daemon off;"]
